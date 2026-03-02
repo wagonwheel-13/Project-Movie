@@ -2,7 +2,7 @@ import React from 'react'
 
 const MovieCard = ({movie}) => {
     function onHeartClick(){
-        alert("You liked " + movie.title)
+        alert("You liked the movie " + movie.title)
     }
     
   return (
