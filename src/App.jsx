@@ -1,11 +1,9 @@
-import React from 'react'
-import MovieCard from './components/moviecard'
+import Home from "./page/Home"
 
-
-const App = () => {
+function App () {
   return (
     <>
-      <MovieCard/>
+    <Home />
     </>
   )
 }
