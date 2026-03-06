@@ -6,7 +6,7 @@ import NavBar from "./components/NavBar"
 function App() {
   return (
     <div>
-      <NavBar />
+      <NavBar /> 
       <main>
         <Routes>
           <Route path="/" element={<Home />} />

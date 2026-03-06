@@ -1,40 +1,58 @@
-import { useState } from "react";
+import { useState, useEffect, use } from "react";
 import MovieCard from "../components/MovieCard";
+import { getPopularMovies, searchPopularMovies } from "../services/API";
 
 function Home() {
     const [searchQuery, setSearchQuery] = useState(""); // Initializes state for the search query
+    const [movies, setMovies] = useState([]); // Initializes state for the list of movies
+    const [error, setError] = useState(null); // Initializes state for error handling
+    const [loading, setLoading] = useState(true); // Initializes state for loading status
 
-    // Temporary dummy movie data for demonstration
-    const movies = [
-        { title: "Movie 1", id: 1, title: "john", releaseDate: "2022" },
-        { title: "Movie 2", id: 2, title: "terminator", releaseDate: "2021" },
-        { title: "Movie 3", id: 3, title: "farcry", releaseDate: "2020" },
-    ];
 
-   const handleSearch = (e) => {
-    e.preventDefault(); // Prevents the default form submission behavior
-    alert(searchQuery); // Displays the current search query in an alert
-    setSearchQuery(""); // Resets the search query state to an empty string
-   }
 
-   return(
-    <div className="">
-        <form onSubmit={handleSearch} >
-            <input type="text" 
-            placeholder="search for movies..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <button type="submit">Search</button>
-        </form>
+    useEffect(() => {
+        const popularMovies = async () => {
+            try {
+                const data = await getPopularMovies() // Fetches popular movies from the API    
+                setMovies(data) // Updates the movies state with the fetched data
+            }
+            catch (error) {
+                console.log(err)
+                setError("Failed to fetch popular movies. Please try again later.") // Sets an error message if the fetch fails
+            }
+            finally {
+                setLoading(false) // Sets loading to false after the fetch is complete, regardless of success or failure
+            }
+        }
+        
+        popularMovies() // Calls the function to fetch popular movies when the component mounts
+    }, [])
 
-        <div>
-            {movies.map(movie => (
-                movie.title.toLowerCase().startsWith(searchQuery) && <MovieCard movie={movie} key={movie.id} />
-            ))}
+    const handleSearch = async (e) => {
+        e.preventDefault() // Prevents the default form submission behavior
+        setLoading(true) // Sets loading to true while the search is being performed       
+        alert(searchQuery)
+        setSearchQuery("") // Clears the search input after submission
+    }
+
+    return (
+        <div className="">
+            <form onSubmit={handleSearch} >
+                <input type="text"
+                    placeholder="search for movies..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <button type="submit">Search</button>
+            </form>
+
+            <div>
+                {movies.map(movie => (
+                    <MovieCard movie={movie} key={movie.id} />
+                ))}
+            </div>
         </div>
-    </div>
-   )
+    )
 }
 
 export default Home;
