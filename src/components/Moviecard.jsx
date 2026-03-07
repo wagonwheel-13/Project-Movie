@@ -8,7 +8,7 @@ function MovieCard({movie}){
   return (
     <div className='bg-red-500 w-50 h-50 display-flex flex-col items-center justify-center'>
         <div className='movie-poster'>
-            <img src={movie.url} alt={movie.title} />
+            <img src={`https://image.tmdb.org/t/p/w500${movie.posterPath}`} alt={movie.title} />
             <div className='move-overlay'>
                 <button className='favorite-button' onClick={onHeartClick}>H</button>
             </div>
