@@ -1,15 +1,18 @@
 
 
+
 import { Link } from "react-router-dom";
 
 function NavBar() {
-    return <nav className="border-2 border-gray-100 text-yellow-300">
-        <div>
-            <Link to="/">Movie App</Link>
-        </div>
-        <div>
-            <Link to="/Home">Home</Link>
-            <Link to="/Favorites">Favorites</Link>
+    return <nav className="bg-slate-900 shadow-lg border-b border-slate-700 sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div>
+                <Link className="text-2xl font-bold text-white hover:text-blue-400 transition-colors" to="/">MovieSite</Link>
+            </div>
+            <div className="flex gap-8 items-center">
+                <Link className="text-gray-200 hover:text-white font-medium transition-colors" to="/">Home</Link>
+                <Link className="text-gray-200 hover:text-white font-medium transition-colors" to="/Favorites">Favorites</Link>
+            </div>
         </div>
     </nav>
 
