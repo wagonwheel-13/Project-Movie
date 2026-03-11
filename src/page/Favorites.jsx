@@ -8,18 +8,13 @@ function Favorites() {
   if (favorites && favorites.length > 0) {
     return (
       <div className="min-h-screen bg-slate-900 px-6 py-12">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
-            <h2 className="text-5xl font-bold text-white mb-2">Your Favorites</h2>
-            <p className="text-gray-400">You have {favorites.length} saved movie{favorites.length !== 1 ? 's' : ''}</p>
-          </div>
+        
           <div className="grid grid-cols-4 gap-6">
             {favorites.map((movie) => (
               <MovieCard movie={movie} key={movie.id} />
             ))}
           </div>
         </div>
-      </div>
     );
   }
 

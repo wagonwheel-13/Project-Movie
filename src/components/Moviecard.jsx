@@ -13,7 +13,7 @@ function MovieCard({movie}) {
     return <div className="bg-slate-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
         <div className="relative overflow-hidden h-96 bg-slate-700">
             <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className="w-full h-full object-cover"/>
-            <div className="absolute inset-0 bg-black opacity-0 hover:opacity-20 transition-opacity"></div>
+            
             <button 
                 className={`absolute top-3 right-3 w-12 h-12 rounded-full flex items-center justify-center text-2xl font-bold transition-all duration-200 ${
                     favorite 

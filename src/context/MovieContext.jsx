@@ -1,8 +1,11 @@
+//apps state management, global storage - aka context
+
+
 import {createContext, useState, useContext, useEffect} from "react"
 
-const MovieContext = createContext()
+const MovieContext = createContext() //context creation
 
-export const useMovieContext = () => useContext(MovieContext)
+export const useMovieContext = () => useContext(MovieContext) 
 
 export const MovieProvider = ({children}) => {
     const [favorites, setFavorites] = useState([])

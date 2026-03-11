@@ -47,7 +47,7 @@ function Home() {
     <div className="min-h-screen bg-slate-900 px-6 py-12">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12 text-center">
-          <h1 className="text-5xl font-bold text-white mb-8">Discover Movies</h1>
+          
           <form onSubmit={handleSearch} className="flex gap-3 max-w-2xl mx-auto">
             <input
               type="text"

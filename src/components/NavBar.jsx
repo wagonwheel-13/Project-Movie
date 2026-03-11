@@ -1,7 +1,7 @@
 
 
 
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; //RRD lets us use Link instead of <a> to prevent page reloads and use client-side routing instead
 
 function NavBar() {
     return <nav className="bg-slate-900 shadow-lg border-b border-slate-700 sticky top-0 z-50">
